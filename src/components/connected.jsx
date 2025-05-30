@@ -3,22 +3,26 @@ import React from 'react';
 const Connected = (props) => {
   return (
     <div className='connected-container'>
-      <h1 className="connected-header">You are Connected to Metamask</h1>
-      <p className="connected-account">Metamask Account: {props.account}</p>
-      <p className="connected-account">Remaining Time: {props.remainingtime ? `${props.remainingtime} seconds` : "N/A"}</p>
-
+      <h1 className="connected-header">🗳️ Voting Dashboard</h1>
+      <div class="connected-account">
+        <strong>Connected Account:</strong> {props.account}
+      </div>
+      <div class="status-card">
+        <div class="status-label">Voting Status</div>
+        <div class="status-value">Active Session</div>
+      </div>
       {props.showButton ? (
         <p className="connected-account">You have already voted</p>
       ) : (
-        <div>
-          <input
-            type="number"
-            placeholder="Enter Candidate Index"
-            value={props.number || ""}
-            onChange={props.handleNumberChange}
-          />
-          <br />
-          <button className="vote-button" onClick={props.voteFunction}>Vote</button>
+        <div class="voting-section">
+          <h3 class="voting-title">Cast Your Vote</h3>
+          <div class="input-group">
+            <label class="input-label" for="candidateIndex">Enter Candidate Index:</label>
+            <input type="number" id="candidateIndex" placeholder="0, 1, 2, or 3" min="0" max="3" value={props.number} onChange={props.handleNumberChange} />
+          </div>
+          <button class="vote-button" onClick={props.voteFunction}>
+            Vote Now
+          </button>
         </div>
       )}
 
